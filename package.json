@@ -11,8 +11,8 @@
     "url": "https://github.com/icarus-sullivan/iter-object/issues"
   },
   "scripts": {
-    "build": "webpack",
-    "prepack": "yarn build",
+    "build": "babel src/index.js --out-file lib.js",
+    "prepublish": "yarn build",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix",
     "test": "jest",
