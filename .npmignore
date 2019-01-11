@@ -1,0 +1,9 @@
+node_modules/
+src/
+
+# config artifacts
+.**
+**.config.js
+
+# package artificats
+yarn.lock
