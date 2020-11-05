@@ -1,4 +1,4 @@
-import { iterObject, iterReplace } from '../index';
+import { iter_obj, iter_repl } from '../index';
 
 const MOCK_OBJECT = {
   src: {
@@ -13,11 +13,10 @@ const MOCK_OBJECT = {
 
 const DESTRUCTIVE = JSON.parse(JSON.stringify(MOCK_OBJECT));
 
-test('iterObject', () => {
-  expect(iterObject).toBeDefined();
+test('iter_obj', () => {
 
   const fn = jest.fn();
-  iterObject(MOCK_OBJECT, (key, value) => fn(key, value));
+  iter_obj(MOCK_OBJECT, (key, value) => fn(key, value));
   expect(fn.mock.calls[0]).toEqual(['src', MOCK_OBJECT.src]);
   expect(fn.mock.calls[1]).toEqual(['foo', MOCK_OBJECT.src.foo]);
   expect(fn.mock.calls[2]).toEqual(['baz', MOCK_OBJECT.src.foo.baz]);
@@ -27,8 +26,8 @@ test('iterObject', () => {
   expect(fn.mock.calls[6]).toEqual(['1', MOCK_OBJECT.versions[1]]);
 });
 
-test('iterReplace', () => {
-  const result = iterReplace(DESTRUCTIVE, (key, value) => {
+test('iter_repl', () => {
+  const result = iter_repl(DESTRUCTIVE, (key, value) => {
     if (key === 'foo') {
       return 'bar';
     }

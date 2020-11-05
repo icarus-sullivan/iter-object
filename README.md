@@ -17,14 +17,14 @@ yarn add iter-object
 
 | Method | Params | Description |
 |--|--|--|
-| iterObject | (src: Object, fn: Function ) | Iterate over objects and display key-value pairs |
-| iterReplace | (src: Object, fn: Function ) => any | Iterate over object and return modified or new values |
+| iter_obj | (src: Object, fn: Function ) | Iterate over objects and display key-value pairs |
+| iter_repl | (src: Object, fn: Function ) => any | Iterate over object and return modified or new values |
 
 #### iterObject
 Example:
 
 ```js
-import { iterObject } from 'iter-object';
+import { iter_obj } from 'iter-object';
 
 const src = {
     owner: 'Alex',
@@ -35,7 +35,7 @@ const src = {
     }
 }
 
-iterObject(src, (key, value) => {
+iter_obj(src, (key, value) => {
     console.log(key, value);
 });
 
@@ -52,7 +52,7 @@ iterObject(src, (key, value) => {
 Example:
 
 ```js
-import { iterReplace } from 'iter-object';
+import { iter_repl } from 'iter-object';
 
 const sellerContent = {
   owner: 'Alex',
@@ -63,7 +63,7 @@ const sellerContent = {
   },
 };
 
-const buyerContent = iterReplace(sellerContent, (key, value) => {
+const buyerContent = iter_repl(sellerContent, (key, value) => {
   switch(key) {
       case 'owner': {
           return 'New Buyer';

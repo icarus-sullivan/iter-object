@@ -1,24 +1,4 @@
-const is = (v, type) => ({}.toString.call(v).slice(8, -1) === type);
 
-export const iterObject = (src, fn) => {
-  if (!is(src, 'Object') && !is(src, 'Array')) {
-    return src;
-  }
-  for (const [key, value] of Object.entries(src)) {
-    fn(key, value);
-    iterObject(value, fn);
-  }
-  return src;
-};
+export const iter_obj = (src, fn) => JSON.stringify(src, (k, v) => k ? (fn(k, v), v) : v);
 
-export const iterReplace = (src, fn) => {
-  if (!is(src, 'Object') && !is(src, 'Array')) {
-    return src;
-  }
-  for (const [key, value] of Object.entries(src)) {
-    const replace = fn(key, value);
-    // eslint-disable-next-line
-    src[key] = iterReplace(replace, fn);
-  }
-  return src;
-};
+export const iter_repl = (src, fn) => JSON.parse(JSON.stringify(src), (k, v) => k ? fn(k, v) : v);
