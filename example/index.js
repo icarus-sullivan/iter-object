@@ -1,6 +1,5 @@
 const { iterObject, iterReplace } = require('iter-object');
 
-
 const src = {
   owner: 'Alex',
   car: {
@@ -20,7 +19,6 @@ iterObject(src, (key, value) => {
 // make Toyota
 // model Matrix
 // year 2013
-
 
 const sellerContent = {
   owner: 'Alex',

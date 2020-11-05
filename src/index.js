@@ -1,4 +1,3 @@
-
 const is = (v, type) => ({}.toString.call(v).slice(8, -1) === type);
 
 export const iterObject = (src, fn) => {
